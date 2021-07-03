@@ -37,7 +37,7 @@ const loadNotes= () =>{
     }catch(e){
         return []
     }
-    
+     
 }
 
 const removeNote=(title)=>{
