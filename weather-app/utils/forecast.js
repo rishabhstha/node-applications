@@ -3,7 +3,7 @@ const request=require('postman-request')
 const forecast=(lat,long,callback)=>{
     const url='http://api.weatherstack.com/current?access_key=3c69126f7ffa05d942195ec41ace6627&query='+lat+','+long+'&units=f'
 
-    request({url,json:true},(error,{body}={})=>{
+    request({url,json:true},(error,{body}={})=>{  //destructuring resposne to body
        // const {body}=response
         if(error){
             callback('Unable to connect to weather services!', undefined)
