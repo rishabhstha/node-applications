@@ -1,24 +1,40 @@
+const path=require('path')
+
 const express=require('express')
 
+//console.log(__dirname)
+console.log(path.join(__dirname, '../public'))
+
 const app=express()
+const publicDirectoryPath=path.join(__dirname, '../public')
 
-app.get('',(req,res)=>{
-    res.send('<h1> Weather </h1>')
-})
+app.use(express.static(publicDirectoryPath))
 
-app.get('/help',(req, res)=>{
-    res.send([{
-        name:'Rishabh',
-        age:22
-    },{
-        name:'Andrea',
-        age:20
-    }])
-})
+// app.get('',(req,res)=>{
+//     res.send('<h1> Weather </h1>')
+// })
 
-app.get('/about',(req,res)=>{
-    res.send('<h1>About Page</h1>')
+//app.get('/help',(req, res)=>{
+//     res.send([{
+//         name:'Rishabh',
+//         age:22
+//     },{
+//         name:'Andrea',
+//         age:20
+//     }])
+// })
+
+// app.get('/about',(req,res)=>{
+//     res.send('<h1>About Page</h1>')
     
+// })
+
+app.get('/about', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../public/about.html'))
+})
+ 
+app.get('/help', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../public/help.html'))
 })
 
 app.get('/weather',(req,res)=>{
