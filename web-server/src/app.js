@@ -4,7 +4,6 @@ const express=require('express')
 
 //console.log(__dirname)
 console.log(path.join(__dirname, '../public'))
-
 const app=express()
 const publicDirectoryPath=path.join(__dirname, '../public')
 
@@ -24,6 +23,13 @@ app.get('/about',(req,res)=>{
         name:'Rishabh Shrestha'
     })
 })
+
+app.get('/help',(req,res)=>{
+    res.render('help',{
+        helpText:"This is some helpful message"
+    })
+})
+
 
 // app.get('',(req,res)=>{
 //     res.send('<h1> Weather </h1>')
@@ -48,9 +54,9 @@ app.get('/about',(req,res)=>{
 //     res.sendFile(path.join(__dirname, '../public/about.html'))
 // })
  
-app.get('/help', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../public/help.html'))
-})
+// app.get('/help', (req, res)=>{
+//     res.sendFile(path.join(__dirname, '../public/help.html'))
+// })
 
 app.get('/weather',(req,res)=>{
     res.send({
