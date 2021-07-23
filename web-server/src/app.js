@@ -9,7 +9,7 @@ const app=express()
 
 //Define paths for Express config
 const publicDirectoryPath=path.join(__dirname, '../public')
-const viewsPath=path.join(__dirname,'../templates/views')
+const viewsPath=path.join(__dirname,'../templates/views')``
 const partialsPath=path.join(__dirname,'../templates/partials')
 
 //Setup handlebars engine and views location
@@ -53,7 +53,7 @@ app.get('/weather',(req,res)=>{
     
     address=req.query.address
     geocode(address,(error, {latitude, longitude, location}={})=>{  //destructuring data returned to latitude, longitude, location
-        //  const {latitude, longitude, location}= data
+        
         if(error){
             return res.send({
                error
@@ -119,18 +119,12 @@ app.get('*',(req, res)=>{
 //     }])
 // })
 
-// app.get('/about',(req,res)=>{
-//     res.send('<h1>About Page</h1>')
-    
-// })
+
 
 // app.get('/about', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../public/about.html'))
 // })
  
-// app.get('/help', (req, res)=>{
-//     res.sendFile(path.join(__dirname, '../public/help.html'))
-// })
 
 
 //app.com
