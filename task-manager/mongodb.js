@@ -1,11 +1,19 @@
 //CRUD operations
 
-const mongodb=require('mongodb')
-const MongoClient=mongodb.MongoClient
+// const mongodb=require('mongodb')
+// const MongoClient=mongodb.MongoClient
+// const ObjectID=mongodb.ObjectID
 
+const {MongoClient, ObjectId}= require('mongodb')
 
 const connectionURL='mongodb://127.0.0.1:27017'
 const databaseName='task-manager'
+
+const id = new ObjectId()
+console.log(id)
+console.log(id.getTimestamp())
+console.log(id.toHexString())
+console.log(id.toHexString().length)
 
 MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     if(error) {
@@ -15,8 +23,9 @@ MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     const db= client.db(databaseName)
 
     // db.collection('users').insertOne({
-    //     name:'Rishabh',
-    //     age: 22
+    //     _id: id,
+    //     name:'Ryan',
+    //     age: 23
     // }, (error, result)=>{
     //         if(error){
     //             return console.log('Unable to insert user')
@@ -42,23 +51,24 @@ MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     //     console.log(result.ops)
     // })
 
-    db.collection('tasks').insertMany([
-        {
-            description: 'Clean',
-            completed:false
+    // db.collection('tasks').insertMany([
+    //     {
+    //         description: 'Clean',
+    //         completed:false
 
-        },{
-            description:"Read",
-            completed: true
-        },{
-            description: "Write",
-            completed: false
-        }
-    ], (error, result)=>{
-        if(error){
-            return console.log("Tasks could not be added!")
-        }
-        console.log(result.insertedIds)
-    })  
+    //     },{
+    //         description:"Read",
+    //         completed: true
+    //     },{
+    //         description: "Write",
+    //         completed: false
+    //     }
+    // ], (error, result)=>{
+    //     if(error){
+    //         return console.log("Tasks could not be added!")
+    //     }
+    //     console.log(result.insertedIds)
+    // })  
 
 })
+
