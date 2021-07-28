@@ -9,11 +9,11 @@ const {MongoClient, ObjectId}= require('mongodb')
 const connectionURL='mongodb://127.0.0.1:27017'
 const databaseName='task-manager'
 
-const id = new ObjectId()
-console.log(id)
-console.log(id.getTimestamp())
-console.log(id.toHexString())
-console.log(id.toHexString().length)
+// const id = new ObjectId()
+// console.log(id)
+// console.log(id.getTimestamp())
+// console.log(id.toHexString())
+// console.log(id.toHexString().length)
 
 MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     if(error) {
@@ -21,6 +21,17 @@ MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     }
     
     const db= client.db(databaseName)
+
+    db.collection('users').findOne({name:'Jen'},(error, user)=>{
+        if(error){
+            return console.log('Unable to fetch')
+        }
+
+        console.log(user)
+    })
+
+
+//Inserting documents
 
     // db.collection('users').insertOne({
     //     _id: id,
