@@ -22,14 +22,38 @@ MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     
     const db= client.db(databaseName)
 
-    db.collection('users').findOne({name:'Jen'},(error, user)=>{
-        if(error){
-            return console.log('Unable to fetch')
-        }
+    // db.collection('users').findOne({_id:ObjectId("6101b5879fce66a024696931")},(error, user)=>{
+    //     if(error){
+    //         return console.log('Unable to fetch')
+    //     }
 
-        console.log(user)
+    //     console.log(user)
+    // })
+
+    // db.collection('users').find({ age:22 }).toArray((error,users)=>{
+    //     console.log(users)
+    // })
+
+    // db.collection('users').find({age: 22}).count((error,count)=>{
+    //     console.log(count)
+    // })
+
+
+    //Finding documents for tasks collection
+    db.collection('tasks').findOne({_id: ObjectId("6100ddf6acc4a7b996efbcaf")},(error,task)=>{
+        if(error){
+            return console.log("Unable to fetch!")
+        }
+        console.log(task)
     })
 
+    //finding documents in tasks collection using find
+    db.collection('tasks').find({completed:false}).toArray((error, tasks)=>{
+        if(error){
+            return console.log("Could not find documents")
+        }
+        console.log(tasks)
+    })
 
 //Inserting documents
 
