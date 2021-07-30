@@ -22,6 +22,36 @@ MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     
     const db= client.db(databaseName)
 
+    //UpdateMany tasks
+    db.collection('tasks').updateMany({
+        completed: false
+    },{
+        $set: {
+            completed: true
+        }
+    }).then((result)=>{
+        console.log(result)
+    }).catch((error)=>{
+        console.log(error)
+    })
+    
+
+
+    //UpdateOne Users
+    // const updatePromise= db.collection('users').updateOne({
+    //     _id: new ObjectId("6100766e42d27114ccd34f60")
+    // },{
+    //     $inc: { 
+    //         age:3
+    //     }
+    // }).then((result)=>{
+    //     console.log(result)
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
+
+
+//Findone users
     // db.collection('users').findOne({_id:ObjectId("6101b5879fce66a024696931")},(error, user)=>{
     //     if(error){
     //         return console.log('Unable to fetch')
@@ -40,20 +70,20 @@ MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
 
 
     //Finding documents for tasks collection
-    db.collection('tasks').findOne({_id: ObjectId("6100ddf6acc4a7b996efbcaf")},(error,task)=>{
-        if(error){
-            return console.log("Unable to fetch!")
-        }
-        console.log(task)
-    })
+    // db.collection('tasks').findOne({_id: ObjectId("6100ddf6acc4a7b996efbcaf")},(error,task)=>{
+    //     if(error){
+    //         return console.log("Unable to fetch!")
+    //     }
+    //     console.log(task)
+    // })
 
-    //finding documents in tasks collection using find
-    db.collection('tasks').find({completed:false}).toArray((error, tasks)=>{
-        if(error){
-            return console.log("Could not find documents")
-        }
-        console.log(tasks)
-    })
+    // //finding documents in tasks collection using find
+    // db.collection('tasks').find({completed:false}).toArray((error, tasks)=>{
+    //     if(error){
+    //         return console.log("Could not find documents")
+    //     }
+    //     console.log(tasks)
+    // })
 
 //Inserting documents
 
