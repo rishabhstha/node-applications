@@ -22,18 +22,34 @@ MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     
     const db= client.db(databaseName)
 
-    //UpdateMany tasks
-    db.collection('tasks').updateMany({
-        completed: false
-    },{
-        $set: {
-            completed: true
-        }
+    db.collection('users').deleteMany({
+        age:25
     }).then((result)=>{
         console.log(result)
     }).catch((error)=>{
         console.log(error)
     })
+
+    db.collection('tasks').deleteOne({
+        description: "Write"
+    }).then((result)=>{
+        console.log(result)
+    }).catch((error)=>{
+        console.log(error)
+    })
+
+    //UpdateMany tasks
+    // db.collection('tasks').updateMany({
+    //     completed: false
+    // },{
+    //     $set: {
+    //         completed: true
+    //     }
+    // }).then((result)=>{
+    //     console.log(result)
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
     
 
 
@@ -113,8 +129,8 @@ MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
     //         return console.log('Unable to insert documents!')
     //     }
 
-    //     console.log(result.ops)
-    // })
+    //      console.log(result.ops)
+    //  })
 
     // db.collection('tasks').insertMany([
     //     {
