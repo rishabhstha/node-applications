@@ -12,6 +12,7 @@
   "dependencies": {
     "mongodb": "^4.0.1",
     "mongodb-client": "^0.0.1",
-    "mongoose": "^5.13.5"
+    "mongoose": "^5.13.5",
+    "validator": "^13.6.0"
   }
 }

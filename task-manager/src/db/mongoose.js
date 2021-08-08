@@ -1,4 +1,5 @@
 const mongoose= require('mongoose')
+const validator= require('validator')
 
 mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api',{
     useNewUrlParser: true,
@@ -6,15 +7,33 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api',{
     useUnifiedTopology: true 
 })
 
+// Creating a model for User
 const User=mongoose.model('User', {
     name: {
-        type:String
+        type:String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        validate(value){
+            if(!validator.isEmail(value)) {
+                throw new Error('Email is invalid')
+            }
+        }
+
     },
     age:{
-        type: Number
+        type: Number,
+        validate(value) {
+            if (value < 0) {
+                throw new Error('Age must be a positive number')
+            }
+        }
     }
 })
 
+//Create a model for task
 const Task=mongoose.model('Task',{
     description: {
         type:String
@@ -26,25 +45,25 @@ const Task=mongoose.model('Task',{
 })
 
 // Creating an instance of Task model
-const read= new Task({
-    description: "Read",
-    completed: false
-})
+// const read= new Task({
+//     description: "Read",
+//     completed: false
+// })
 
-read.save().then(()=>{
-    console.log(read)
-}).catch((error)=>{
-    console.log(error)
-})
+// read.save().then(()=>{
+//     console.log(read)
+// }).catch((error)=>{
+//     console.log(error)
+// })
 
 //Creating a model for User
-// const me= new User({
-//     name: 'Rishabh',
-//     age: 'Yes'
-// })
+const me= new User({
+    name:'Mike',
+    email: 'mike@'
+})
 
-// me.save().then(()=>{
-//     console.log(me)
-// }).catch((error)=>{
-//     console.log('Error', error)
-// })
+me.save().then(()=>{
+    console.log(me)
+}).catch((error)=>{
+    console.log('Error', error)
+})
