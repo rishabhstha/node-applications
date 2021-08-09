@@ -57,10 +57,10 @@ const Task=mongoose.model('Task',{
 // })
 
 //Creating a model for User
-const me= new User({
-    name:'Mike',
-    email: 'mike@'
-})
+// const me= new User({
+//     name:'Mike',
+//     email: 'mike@'
+// })
 
 me.save().then(()=>{
     console.log(me)
