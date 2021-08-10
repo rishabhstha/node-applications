@@ -48,38 +48,47 @@ const User=mongoose.model('User', {
     }
 })
 
+
+
+
+//Creating a model for User
+// const me= new User({
+//     name:'  Rishabh  ',
+//     email: 'MYEMAIL@GMAIL.COM  ',
+//     password: "heythere123! "
+// })
+
+// me.save().then(()=>{
+//     console.log(me)
+// }).catch((error)=>{
+//     console.log('Error', error)
+// })
+
+
+
 //Create a model for task
 const Task=mongoose.model('Task',{
     description: {
-        type:String
+        type:String,
+        required: true,
+        trim:true
     },
     completed:{
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 
 })
 
+
 // Creating an instance of Task model
-// const read= new Task({
-//     description: "Read",
-//     completed: false
-// })
-
-// read.save().then(()=>{
-//     console.log(read)
-// }).catch((error)=>{
-//     console.log(error)
-// })
-
-//Creating a model for User
-const me= new User({
-    name:'  Rishabh  ',
-    email: 'MYEMAIL@GMAIL.COM  ',
-    password: "heythere123! "
+const read= new Task({
+    description: "Write   "
+    // completed: false
 })
 
-me.save().then(()=>{
-    console.log(me)
+read.save().then(()=>{
+    console.log(read)
 }).catch((error)=>{
-    console.log('Error', error)
+    console.log(error)
 })
