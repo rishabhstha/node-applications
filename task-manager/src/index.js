@@ -14,20 +14,30 @@ app.post('/users',(req, res)=>{
 
     const user= new User(req.body)
     user.save().then(()=>{
-        res.send(user)
+        res.status(201).addTrailerssend(user)
     }).catch((error)=>{
         res.status(400).send(error)
        
     })
 })
 
+//Reading users endpoint
+app.get('/users',(req,res)=>{
+    User.find({}).then((users)=>{
+        res.send(users)
+    }).catch((e)=>{
+        res.status(500).send()
+    })
+})
+
+
 app.post('/tasks',(req, res)=>{
 
     const task= new Task(req.body)
     task.save().then(()=>{
-        res.send(task)
+        res.status(201).send(task)
     }).catch((e)=>{
-        res.send(e)
+        res.status(400).send(e)
     })
 })
 
