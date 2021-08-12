@@ -35,7 +35,7 @@ app.get('/users',(req,res)=>{
 //getting one user
 app.get('/users/:id', (req,res)=>{
     const _id= req.params.id
-
+    console.log(_id)
     User.findById(_id).then((user)=>{
         // if(!user){
         //     return res.status(404).send(user)
@@ -48,7 +48,7 @@ app.get('/users/:id', (req,res)=>{
         return res.status(500).send(e)
     })
     
-    console.log(req.params)
+    // console.log(req.params)
 })
 
 //writing one task
@@ -61,6 +61,33 @@ app.post('/tasks',(req, res)=>{
         res.status(400).send(e)
     })
 })
+
+// Create an endpoint for fetching all tasks
+app.get('/tasks',(req,res)=>{
+    console.log("aye")
+    Task.find({}).then((tasks)=>{
+        res.send(tasks)
+    }).catch((e)=>{
+        res.status(500).send(e)
+    })
+})
+
+//Create an endpoint for fetching task by its id
+app.get('tasks/:id',(req,res)=>{
+    console.log("aye")
+    const _id = req.params.id
+    console.log(_id)
+    Task.findById(_id).then((task)=>{
+        if(!task){
+            return res.status(404).send()
+        }
+        res.send(task)
+
+    }).catch((e)=>{
+        res.status(500).send()
+    })
+})
+
 
 app.listen(port, ()=>{
     console.log("Server is up on "+ port)
