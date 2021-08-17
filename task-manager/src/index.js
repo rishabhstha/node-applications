@@ -73,7 +73,7 @@ app.get('/tasks',(req,res)=>{
 })
 
 //Create an endpoint for fetching task by its id
-app.get('tasks/:id',(req,res)=>{
+app.get('`tasks/:id',(req,res)=>{
     console.log("aye")
     const _id = req.params.id
     console.log(_id)
