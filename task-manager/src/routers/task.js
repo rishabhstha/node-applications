@@ -7,7 +7,7 @@ router.get('/test2', (req, res)=>{
     res.send("This is test router for task model")
 })
 
-module.exports= router
+
 
 //writing one task
 router.post('/tasks',async (req, res)=>{
@@ -108,3 +108,5 @@ router.delete('/tasks/:id', async(req, res)=>{
         res.status(500).send(e)
     }
 })
+
+module.exports= router

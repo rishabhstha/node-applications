@@ -7,7 +7,7 @@ router.get('/test', (req,res)=>{
     res.send("This is from my other router")
 })
 
-module.exports=router
+
 
 //Writing new user
 router.post('/users',async(req, res)=>{
@@ -117,3 +117,5 @@ router.delete('/users/:id', async(req, res)=>{
         res.status(500).send()
     }
 })
+
+module.exports=router
