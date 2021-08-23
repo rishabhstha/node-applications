@@ -35,6 +35,16 @@ router.post('/users',async(req, res)=>{
     // })
 })
 
+//User authentication
+router.post('/users/login', async(req, res)=>{
+    try{
+        const user= await User.findByCredentials(req.body.email, req.body.password)
+        res.send(user)
+    } catch(e) {
+        res.status(400).send()
+    }
+})
+
 //Reading users endpoint
 //gets all the users
 router.get('/users',async(req,res)=>{

@@ -2,9 +2,7 @@ const { MongoServerError } = require('mongodb')
 const mongoose=require('mongoose')
 const validator= require('validator')
 
-
-//Create a model for task
-const Task=mongoose.model('Task',{
+const taskSchema= new mongoose.Schema({
     description: {
         type:String,
         required: true,
@@ -16,5 +14,8 @@ const Task=mongoose.model('Task',{
     }
 
 })
+
+//Create a model for task
+const Task=mongoose.model('Task', taskSchema)
 
 module.exports=Task
