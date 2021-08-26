@@ -42,6 +42,31 @@ router.post('/users/login', async(req, res)=>{
     }
 })
 
+//Logout from one session
+router.post('/users/logout', auth, async(req, res)=>{
+    try{
+        req.user.tokens= req.user.tokens.filter((token)=>{
+            return token.token !== req.token
+        })
+        await req.user.save()
+        res.send()
+    } catch(e) {
+        res.status(500).send()
+
+    }
+})
+
+//Logout from another session
+router.post('/users/logoutAll', auth, async(req, res)=>{
+    try{
+        req.user.tokens=[]
+        await req.user.save()
+        res.send()
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
 //Reading users endpoint
 //gets all the users
 router.get('/users/me', auth, async(req,res)=>{
