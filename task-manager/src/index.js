@@ -28,20 +28,33 @@ app.use(taskRouter)
 //Without middleware: new request-> run route handler
 //With-middleware: new request -> do something -> run route handler
 
+
 app.listen(port, ()=>{
     console.log("Server is up on "+ port)
 })
 
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
 
-const myFunction = async () =>{
-    const token = jwt.sign({ _id: 'abc123'}, 'thisismynewcourse', { expiresIn: '7 days' }) //creating a jwt
-    console.log(token)
-
-    const data = jwt.verify(token, 'thisismynewcourse')
-    console.log(data)
+const pet ={
+    name: 'Hal'
 }
 
+pet.toJSON = function() {
+    console.log(this)
+    return this
+}
 
-myFunction()
+console.log(JSON.stringify(pet))
+
+// const bcrypt = require('bcryptjs')
+// const jwt = require('jsonwebtoken')
+
+// const myFunction = async () =>{
+//     const token = jwt.sign({ _id: 'abc123'}, 'thisismynewcourse', { expiresIn: '7 days' }) //creating a jwt
+//     console.log(token)
+
+//     const data = jwt.verify(token, 'thisismynewcourse')
+//     console.log(data)
+// }
+
+
+// myFunction()
