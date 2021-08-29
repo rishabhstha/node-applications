@@ -51,6 +51,14 @@ const userSchema =  new mongoose.Schema({
     }]
 })
 
+//User-task relationship
+userSchema.virtual('tasks',{
+    ref:'Task',
+    localField:'_id',
+    foreignField:'owner'
+
+})
+
 //method to get public profile of user
 userSchema.methods.toJSON =function() {
     const user = this
