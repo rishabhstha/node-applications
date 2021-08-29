@@ -33,17 +33,28 @@ app.listen(port, ()=>{
     console.log("Server is up on "+ port)
 })
 
+const Task = require('./models/task')
 
-const pet ={
-    name: 'Hal'
+const main = async()=>{
+    const task = await Task.findById('612b0b9041ec2ffdbc05a8f7')
+    // console.log(task)
+    
+    await task.populate('owner').execPopulate()
+    console.log(task)
+    // console.log(task.owner)
 }
+main()
 
-pet.toJSON = function() {
-    console.log(this)
-    return this
-}
+// const pet ={
+//     name: 'Hal'
+// }
 
-console.log(JSON.stringify(pet))
+// pet.toJSON = function() {
+//     console.log(this)
+//     return this
+// }
+
+// console.log(JSON.stringify(pet))
 
 // const bcrypt = require('bcryptjs')
 // const jwt = require('jsonwebtoken')
