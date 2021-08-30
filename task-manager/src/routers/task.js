@@ -31,11 +31,16 @@ router.post('/tasks', auth, async (req, res)=>{
 })
 
 // Create an endpoint for fetching all tasks
+//GET /tasks?completed=true
 router.get('/tasks', auth, async(req,res)=>{
-    console.log("aye")
-
+    const match = {}
+    
+    if(req.query.completed){
+        match.completed= req.query.completed=== 'true'
+    }
+    console.log(match.completed)
     try{
-        const tasks= await Task.find({owner:req.user._id})
+        const tasks= await Task.find({owner:req.user._id, completed: match.completed})
         res.send(tasks)
     } catch(e){
         res.status(500).send(e)
