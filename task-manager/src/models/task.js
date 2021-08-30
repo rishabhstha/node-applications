@@ -18,6 +18,8 @@ const taskSchema= new mongoose.Schema({
         ref: 'User'
     }
 
+},{
+    timestamps:true
 })
 
 //Create a model for task
