@@ -7,6 +7,15 @@ const taskRouter= require('./routers/task')
 const app= express()
 const port=process.env.PORT || 3000
 
+const multer= require('multer')
+const upload = multer({
+    dest: 'images'
+})
+
+app.post('/upload', upload.single('upload'), (req, res)=>{
+    res.send()
+})
+
 // app.use((req, res, next)=>{
 //     if(req.method === 'GET'){
 //         res.send('GET requests are disabled')
@@ -36,7 +45,7 @@ app.listen(port, ()=>{
 const Task = require('./models/task')
 const User = require('./models/user')
 
-const main = async()=>{
+// const main = async()=>{
 
     // const user = await User.findById('612b03d9176c00f408ce816e')
     // await user.populate('tasks').execPopulate()
@@ -47,8 +56,8 @@ const main = async()=>{
     // await task.populate('owner').execPopulate()
     // console.log(task)
     // // console.log(task.owner)
-}
-main()
+// }
+// main()
 
 // const pet ={
 //     name: 'Hal'
