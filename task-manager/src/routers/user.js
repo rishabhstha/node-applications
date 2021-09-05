@@ -176,9 +176,15 @@ const upload = multer({
         cb(undefined, true)
     }
 })
+
+
+
+
 //route for uploading user's profile picture
 router.post('/users/me/avatar', upload.single('avatar'), (req, res)=>{
     res.send()
+}, (error, req, res, next)=>{
+    res.status(400).send({error: error.message})
 })
 
 module.exports=router
