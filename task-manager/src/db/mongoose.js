@@ -1,7 +1,7 @@
 const mongoose= require('mongoose')
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api',{
+mongoose.connect(process.env.MONGODB_URL,{
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -17,7 +17,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api',{
 //     password: "heythere123! "
 // })
 
-// me.save().then(()=>{
+// me.save().then(()=>{   
 //     console.log(me)
 // }).catch((error)=>{
 //     console.log('Error', error)
