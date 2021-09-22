@@ -26,14 +26,3 @@ module.exports={
     sendWelcomeEmail,
     sendCancellationEmail
 }
-
-// sgMail.send({
-//     to: 'rishabhstha@gmail.com',
-//     from: 'rishabhstha@gmail.com',
-//     subject: 'This is my first creation!',
-//     text: 'Hope you get this email'
-// })
-
-
-
-//
